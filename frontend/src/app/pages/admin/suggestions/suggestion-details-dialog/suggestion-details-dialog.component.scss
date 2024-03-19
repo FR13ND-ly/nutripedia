@@ -6,7 +6,7 @@
 }
 
 .main {
-  max-height: 90vh;
+  max-height: 60vh;
   overflow-y: auto;
 }
 
@@ -16,6 +16,15 @@ h2 {
 
 .actions {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   margin-top: 1rem;
+}
+
+section {
+  margin-block: 1rem;
+}
+
+.c {
+  display: flex;
+  gap: 1rem;
 }

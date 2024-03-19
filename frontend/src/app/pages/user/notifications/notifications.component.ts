@@ -5,6 +5,7 @@ import { selectUser } from '../../../store/user/user.reducer';
 import { Observable, map, switchMap } from 'rxjs';
 import { MaterialModule } from '../../../core/feature/material/material.module';
 import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notifications',
@@ -16,6 +17,7 @@ import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
 export class NotificationsComponent {
   blogService = inject(BlogService);
   store = inject(Store);
+  snackbar = inject(MatSnackBar);
 
   user$ = this.store.select(selectUser).pipe(map((el: any) => el.user));
   notifications$: Observable<any> = this.user$.pipe(
@@ -25,6 +27,7 @@ export class NotificationsComponent {
   onDelete(notification: any, notifications: any, index: any) {
     this.blogService.deleteNotification(notification.id).subscribe(() => {
       notifications.splice(index, 1);
+      this.snackbar.open('Notification deleted', '', { duration: 3000 });
     });
   }
 }

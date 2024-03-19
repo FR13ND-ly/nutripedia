@@ -26,6 +26,6 @@ export class NextStepComponent {
     };
     this.userService
       .setPreferences(this.userId, data)
-      .subscribe((res) => this.router.navigate(['blog']));
+      .subscribe((res) => this.router.navigate(['home']));
   }
 }

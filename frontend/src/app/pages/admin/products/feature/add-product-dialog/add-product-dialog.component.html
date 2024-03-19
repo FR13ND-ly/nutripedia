@@ -8,9 +8,9 @@
 </p>
 
 <form (submit)="onSubmit()" ngForm>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Product Code</mat-label>
     <input matInput [formControl]="code" />
+    <button mat-button><mat-icon>add</mat-icon>Add</button>
   </mat-form-field>
-  <button mat-button color="accent">Add</button>
 </form>

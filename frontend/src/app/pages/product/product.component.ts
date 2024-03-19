@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/data-access/product.service';
 import { Observable, combineLatest, map, switchMap, tap } from 'rxjs';
@@ -9,6 +9,7 @@ import { RatingsComponent } from './feature/ratings/ratings.component';
 import { Store } from '@ngrx/store';
 import { selectUser } from '../../store/user/user.reducer';
 import { SimilarComponent } from './ui/similar/similar.component';
+import { setLoading } from '../../store/loading/loading.actions';
 
 @Component({
   selector: 'app-product',
@@ -23,14 +24,15 @@ import { SimilarComponent } from './ui/similar/similar.component';
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   productService = inject(ProductService);
   route = inject(ActivatedRoute);
   store = inject(Store);
 
   user$ = this.store.select(selectUser).pipe(map((el: any) => el.user));
   product$: Observable<any> = this.route.params.pipe(
-    switchMap((params: any) => this.productService.getProduct(params.id))
+    switchMap((params: any) => this.productService.getProduct(params.id)),
+    tap(() => this.store.dispatch(setLoading({ state: false })))
   );
 
   vs$: Observable<any> = combineLatest(this.user$, this.product$).pipe(
@@ -41,4 +43,8 @@ export class ProductComponent {
       };
     })
   );
+
+  ngOnInit(): void {
+    this.store.dispatch(setLoading({ state: true }));
+  }
 }

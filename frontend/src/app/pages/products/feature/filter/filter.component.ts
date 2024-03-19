@@ -25,7 +25,6 @@ export class FilterComponent implements OnInit {
     brands: [],
     categories: [],
     ingredients: [],
-    nutriments: [],
   };
 
   ngOnInit(): void {
@@ -61,6 +60,9 @@ export class FilterComponent implements OnInit {
         }
       });
     });
+    this.filters.brands = this.filters.brands.sort().reverse();
+    this.filters.categories = this.filters.categories.sort().reverse();
+    this.filters.ingredients = this.filters.ingredients.sort().reverse();
   }
 
   onChange() {

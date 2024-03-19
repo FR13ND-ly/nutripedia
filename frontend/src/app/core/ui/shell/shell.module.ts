@@ -39,13 +39,6 @@ import { ShellComponent } from './shell.component';
                 (m) => m.UserModule
               ),
           },
-          {
-            path: 'admin',
-            loadChildren: () =>
-              import('./../../../pages/admin/admin.module').then(
-                (m) => m.AdminModule
-              ),
-          },
         ],
       },
     ]),

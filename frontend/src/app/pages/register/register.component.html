@@ -12,6 +12,13 @@
     <input matInput type="password" formControlName="password" />
   </mat-form-field>
 
-  <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+  <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    [disabled]="registrationForm.invalid"
+  >
+    Continue
+  </button>
 </form>
 }

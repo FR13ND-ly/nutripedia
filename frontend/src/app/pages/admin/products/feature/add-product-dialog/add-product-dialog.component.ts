@@ -9,6 +9,9 @@ import { ProductService } from '../../../../../core/data-access/product.service'
 import { MaterialModule } from '../../../../../core/feature/material/material.module';
 import { UtilsService } from '../../../../../core/data-access/utils.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { setLoading } from '../../../../../store/loading/loading.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-product-dialog',
@@ -21,17 +24,22 @@ export class AddProductDialogComponent {
   productService = inject(ProductService);
   utilsService = inject(UtilsService);
   dialogRef = inject(MatDialogRef);
+  store = inject(Store);
+  snackbar = inject(MatSnackBar);
 
   code = new FormControl('', Validators.required);
 
   onSubmit() {
     if (this.code.invalid) return;
+    this.store.dispatch(setLoading({ state: true }));
     this.utilsService
       .getProductFromApi(this.code.value)
       .subscribe((res: any) => {
         let data: any = this.getProduct(res.product);
         this.productService.createProduct(data).subscribe((res) => {
+          this.store.dispatch(setLoading({ state: false }));
           this.dialogRef.close(res);
+          this.snackbar.open('Product added', '', { duration: 3000 });
         });
       });
   }

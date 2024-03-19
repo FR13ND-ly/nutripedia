@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 import { logoutGuard } from './core/guards/logout.guard';
 import { authGuard } from './core/guards/auth.guard';
+import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
   {
-    path: 'about',
+    path: '',
     loadChildren: () =>
       import('./pages/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule
@@ -23,14 +24,19 @@ export const routes: Routes = [
     canActivate: [logoutGuard],
   },
   {
-    path: '',
+    path: 'home',
     loadChildren: () =>
       import('./core/ui/shell/shell.module').then((m) => m.ShellModule),
     canActivate: [authGuard],
   },
   {
-    path: '**',
+    path: 'admin',
     loadChildren: () =>
-      import('./pages/notfound/notfound.module').then((m) => m.NotfoundModule),
+      import('./pages/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [adminGuard],
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];

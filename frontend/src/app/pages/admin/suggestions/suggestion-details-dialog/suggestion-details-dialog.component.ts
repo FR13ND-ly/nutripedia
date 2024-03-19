@@ -4,6 +4,7 @@ import { SuggestionService } from '../../../../core/data-access/suggestion.servi
 import { MaterialModule } from '../../../../core/feature/material/material.module';
 import { NgIf } from '@angular/common';
 import { DifferencesComponent } from '../ui/differences/differences.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-suggestion-details-dialog',
@@ -16,6 +17,7 @@ export class SuggestionDetailsDialogComponent {
   data = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
   suggestionService = inject(SuggestionService);
+  snackbar = inject(MatSnackBar);
 
   suggestion: any;
   allergens: any;
@@ -32,6 +34,7 @@ export class SuggestionDetailsDialogComponent {
   onApprove() {
     if (!confirm('Are you sure?')) return;
     this.suggestionService.approve(this.suggestion.id).subscribe(() => {
+      this.snackbar.open('Suggestion approved', '', { duration: 3000 });
       this.dialogRef.close();
     });
   }
@@ -39,6 +42,7 @@ export class SuggestionDetailsDialogComponent {
   onDisApprove() {
     if (!confirm('Are you sure?')) return;
     this.suggestionService.disapprove(this.suggestion.id).subscribe(() => {
+      this.snackbar.open('Suggestion declined', '', { duration: 3000 });
       this.dialogRef.close();
     });
   }
@@ -46,6 +50,7 @@ export class SuggestionDetailsDialogComponent {
   onDelete() {
     if (!confirm('Are you sure?')) return;
     this.suggestionService.delete(this.suggestion.id).subscribe(() => {
+      this.snackbar.open('Suggestion deleted', '', { duration: 3000 });
       this.dialogRef.close();
     });
   }
@@ -60,7 +65,6 @@ export class SuggestionDetailsDialogComponent {
 
     res.added = newArr.filter((el: any) => !oldArr.includes(el));
     res.removed = oldArr.filter((el: any) => !newArr.includes(el));
-    console.log(stages);
     return res;
   }
 }

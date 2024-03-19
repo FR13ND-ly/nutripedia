@@ -1,6 +1,6 @@
 import { Injectable, afterNextRender, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, from, map, of, retry, take, tap } from 'rxjs';
+import { filter, from, map, of, retry, take, tap, timer } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -53,7 +53,7 @@ export class UserService {
 
   logout() {
     localStorage.setItem('token', '');
-    this.router.navigate(['login']);
+    this.router.navigate(['/']);
   }
 
   getUser(id: any) {

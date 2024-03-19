@@ -4,6 +4,9 @@ import { UserService } from '../../core/data-access/user.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { userActions } from '../../store/user/user.actions';
+import { setLoading } from '../../store/loading/loading.actions';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +20,7 @@ export class LoginComponent {
   fb = inject(FormBuilder);
   snackbar = inject(MatSnackBar);
   router = inject(Router);
+  store = inject(Store);
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -29,6 +33,10 @@ export class LoginComponent {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
     };
-    this.userService.signIn(data).subscribe(() => this.router.navigate(['']));
+    this.store.dispatch(setLoading({ state: true }));
+    this.userService.signIn(data).subscribe(() => {
+      this.router.navigate(['home']);
+      this.store.dispatch(setLoading({ state: false }));
+    });
   }
 }

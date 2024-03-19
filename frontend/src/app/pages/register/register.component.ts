@@ -38,6 +38,21 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.registrationForm.invalid) return;
+    if (this.registrationForm.value.username!?.trim().length < 3) {
+      this.snackbar.open(
+        'Username too short. Please choose a longer username',
+        '',
+        { duration: 3000 }
+      );
+      return;
+    }
+    // if (this.registrationForm.value.password!?.trim().length < 5) {
+    //   this.snackbar.open(
+    //     'Password insecure. Please choose a stronger password',
+    //     ''
+    //   );
+    //   return;
+    // }
     let data = {
       username: this.registrationForm.value.username,
       password: this.registrationForm.value.password,

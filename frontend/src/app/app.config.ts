@@ -16,6 +16,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { userFeature } from './store/user/user.reducer';
 import { UserEffects } from './store/user/user.effects';
 import { provideMarkdown } from 'ngx-markdown';
+import { loadingFeature } from './store/loading/loading.reducer';
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -37,6 +38,7 @@ export const appConfig: ApplicationConfig = {
     provideStore(),
     provideMarkdown(),
     provideState(userFeature),
+    provideState(loadingFeature),
     provideEffects([UserEffects]),
     provideHttpClient(withFetch()),
   ],

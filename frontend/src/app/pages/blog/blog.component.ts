@@ -1,15 +1,15 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, afterNextRender, inject } from '@angular/core';
 import { ArticleComponent } from './feature/article/article.component';
 import { BlogService } from '../../core/data-access/blog.service';
 import { ArticleInputComponent } from './feature/article-input/article-input.component';
 import { AsyncPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable, map, switchMap, tap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectUser } from '../../store/user/user.reducer';
 import { MaterialModule } from '../../core/feature/material/material.module';
 import { ArticleDialogComponent } from './feature/article-dialog/article-dialog.component';
-import { UserComponent } from '../../core/ui/user/user.component';
+import { GuidelinesDialogComponent } from './feature/guidelines-dialog/guidelines-dialog.component';
 
 @Component({
   selector: 'app-blog',
@@ -36,6 +36,16 @@ export class BlogComponent {
           data: res,
         });
       });
+  }
+
+  constructor() {
+    afterNextRender(() => {
+      let accepted = localStorage.getItem('accepted') == 'true';
+      if (!accepted) {
+        let d = this.dialog.open(GuidelinesDialogComponent);
+        d.afterClosed().subscribe(() => location.reload());
+      }
+    });
   }
 
   blogService = inject(BlogService);

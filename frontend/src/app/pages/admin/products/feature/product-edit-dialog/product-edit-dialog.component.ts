@@ -4,6 +4,9 @@ import { MaterialModule } from '../../../../../core/feature/material/material.mo
 import { FormsModule } from '@angular/forms';
 import { ChipsComponent } from '../../../../../core/feature/chips/chips.component';
 import { ProductService } from '../../../../../core/data-access/product.service';
+import { Store } from '@ngrx/store';
+import { setLoading } from '../../../../../store/loading/loading.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-edit-dialog',
@@ -16,6 +19,8 @@ export class ProductEditDialogComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
   productsService = inject(ProductService);
+  store = inject(Store);
+  snackbar = inject(MatSnackBar);
 
   product: any;
 
@@ -30,6 +35,7 @@ export class ProductEditDialogComponent implements OnInit {
       categories: this.product.categories.map((el: any) => el.name),
       ingredients: this.product.ingredients.map((el: any) => el.name),
     };
+    this.store.dispatch(setLoading({ state: true }));
     this.productsService
       .updateProduct(this.product.id, data)
       .subscribe((res: any) => {
@@ -37,6 +43,8 @@ export class ProductEditDialogComponent implements OnInit {
         this.data.brand = res.brand;
         this.data.weight = res.weight;
         this.dialogRef.close();
+        this.store.dispatch(setLoading({ state: false }));
+        this.snackbar.open('Product modified', '', { duration: 3000 });
       });
   }
 }

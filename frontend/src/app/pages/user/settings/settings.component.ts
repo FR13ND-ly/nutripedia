@@ -7,6 +7,7 @@ import { selectUser } from '../../../store/user/user.reducer';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { Observable, switchMap, tap } from 'rxjs';
 import { FileService } from '../../../core/data-access/file.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-settings',
@@ -19,6 +20,7 @@ export class SettingsComponent {
   store = inject(Store);
   userService = inject(UserService);
   fileService = inject(FileService);
+  snackbar = inject(MatSnackBar);
 
   allergens = [];
   dietaryPrefs = [];
@@ -40,7 +42,9 @@ export class SettingsComponent {
       allergens: this.allergens.map((el: any) => el.name),
       dietaryPrefs: this.dietaryPrefs.map((el: any) => el.name),
     };
-    this.userService.setPreferences(user.id, data).subscribe();
+    this.userService.setPreferences(user.id, data).subscribe(() => {
+      this.snackbar.open('Suggestion modified', '', { duration: 3000 });
+    });
   }
 
   onChangeAvatar(e: any, user: any) {
@@ -54,6 +58,9 @@ export class SettingsComponent {
           return this.userService.updateUser(user.id, data);
         })
       )
-      .subscribe((res) => (user.imageUrl = res));
+      .subscribe((res) => {
+        this.snackbar.open('Suggestion modified', '', { duration: 3000 });
+        user.imageUrl = res;
+      });
   }
 }

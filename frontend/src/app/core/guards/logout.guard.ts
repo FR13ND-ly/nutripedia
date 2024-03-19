@@ -12,7 +12,7 @@ export const logoutGuard: CanActivateFn = (route, state) => {
   return user$.pipe(
     map((res: any) => {
       if (res?.user) {
-        router.navigate(['/']);
+        router.navigate(['/home']);
         return false;
       } else {
         return true;

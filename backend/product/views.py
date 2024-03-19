@@ -3,6 +3,7 @@ from user.models import User
 from user.models import Allergen as UserAllergen
 from user.models import DietaryPref as UserIngredient
 from file.views import getFile
+from suggestion.models import Suggestion
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework import status
@@ -27,7 +28,7 @@ def createProduct(request):
     data = JSONParser().parse(request)
     product = Product.objects.create(
         code = data["code"],
-        name = data["brand"],
+        name = data["name"],
         brand = data["brand"],
         weight = data["weight"],
         imageUrl = data["imageUrl"]
@@ -127,6 +128,10 @@ def deleteProduct(request, id):
         comment.delete()
     for vote in Vote.objects.filter(productId = product.id):
         vote.delete()
+    for favorite in Favorite.objects.filter(productId = product.id):
+        favorite.delete()
+    for suggestion in Suggestion.objects.filter(productId = product.id):
+        suggestion.delete()
     product.delete()
     return JsonResponse({}, status=status.HTTP_200_OK, safe=False)
 

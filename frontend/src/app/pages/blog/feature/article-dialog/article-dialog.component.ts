@@ -13,6 +13,8 @@ import {
 import { CommentComponent } from '../comment/comment.component';
 import { LikedPipe } from '../../../../core/pipes/liked.pipe';
 import { UserComponent } from '../../../../core/ui/user/user.component';
+import { Store } from '@ngrx/store';
+import { setLoading } from '../../../../store/loading/loading.actions';
 
 @Component({
   selector: 'app-article-dialog',
@@ -33,6 +35,7 @@ import { UserComponent } from '../../../../core/ui/user/user.component';
 export class ArticleDialogComponent {
   blogService = inject(BlogService);
   article = inject(MAT_DIALOG_DATA);
+  store = inject(Store);
 
   articleEdit = new FormControl(this.article.content, Validators.required);
 
@@ -62,11 +65,13 @@ export class ArticleDialogComponent {
     let data = {
       content: this.articleEdit.value,
     };
+    this.store.dispatch(setLoading({ state: true }));
     this.blogService
       .updateArticle(this.article.id, data)
       .subscribe((res: any) => {
         this.article.content = res.content;
         this.article.edit = false;
+        this.store.dispatch(setLoading({ state: false }));
       });
   }
 }

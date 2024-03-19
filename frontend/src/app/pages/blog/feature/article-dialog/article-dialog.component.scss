@@ -27,9 +27,6 @@ h2 {
 .editor {
   width: 100%;
   margin-top: 1rem;
-  textarea {
-    height: 10rem;
-  }
 }
 
 .add-comment {
@@ -44,5 +41,6 @@ h2 {
     gap: 1rem;
     height: 60vh;
     overflow-y: auto;
+    padding-bottom: 2rem;
   }
 }

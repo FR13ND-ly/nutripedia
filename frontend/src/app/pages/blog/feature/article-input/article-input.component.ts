@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { selectUser } from '../../../../store/user/user.reducer';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { BlogService } from '../../../../core/data-access/blog.service';
+import { setLoading } from '../../../../store/loading/loading.actions';
 
 @Component({
   selector: 'article-input',
@@ -27,6 +28,7 @@ export class ArticleInputComponent {
   blogService = inject(BlogService);
   article = new FormControl('', Validators.required);
   focused = signal(false);
+  store = inject(Store);
 
   onPublish() {
     if (this.article.invalid) return;
@@ -34,8 +36,10 @@ export class ArticleInputComponent {
       userId: this.userId,
       content: this.article.value,
     };
+    this.store.dispatch(setLoading({ state: true }));
     this.blogService.createArticle(data).subscribe((article) => {
       this.article.reset();
+      this.store.dispatch(setLoading({ state: false }));
       this.add.emit(article);
     });
   }

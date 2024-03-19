@@ -1,11 +1,17 @@
 :host {
   display: flex;
   flex-direction: column;
-  width: 15rem;
+  width: 16rem;
   gap: 1rem;
+  background-color: var(--background-100);
+  padding: 1rem;
+  box-sizing: border-box;
+  height: fit-content;
+  position: sticky;
+  top: 5rem;
 }
 
-h3 {
+h2 {
   margin: 0;
 }
 
@@ -16,6 +22,6 @@ section {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    max-height: 10rem;
+    max-height: 12.8rem;
   }
 }

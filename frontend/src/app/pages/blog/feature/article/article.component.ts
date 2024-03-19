@@ -6,6 +6,8 @@ import { ArticleDialogComponent } from '../article-dialog/article-dialog.compone
 import { MaterialModule } from '../../../../core/feature/material/material.module';
 import { UserComponent } from '../../../../core/ui/user/user.component';
 import { LikedPipe } from '../../../../core/pipes/liked.pipe';
+import { Store } from '@ngrx/store';
+import { setLoading } from '../../../../store/loading/loading.actions';
 
 @Component({
   selector: 'app-article',
@@ -20,6 +22,7 @@ export class ArticleComponent {
   @Output() delete = new EventEmitter();
   blogService = inject(BlogService);
   dialog = inject(MatDialog);
+  store = inject(Store);
 
   onLike() {
     let data = {
@@ -39,7 +42,6 @@ export class ArticleComponent {
   }
 
   onEdit() {
-    console.log(this.article);
     this.dialog.open(ArticleDialogComponent, {
       data: {
         ...this.article,
@@ -50,8 +52,10 @@ export class ArticleComponent {
   }
 
   onDeleteArticle() {
-    this.blogService
-      .deleteArticle(this.article.id)
-      .subscribe(() => this.delete.emit());
+    this.store.dispatch(setLoading({ state: true }));
+    this.blogService.deleteArticle(this.article.id).subscribe(() => {
+      this.delete.emit();
+      this.store.dispatch(setLoading({ state: false }));
+    });
   }
 }

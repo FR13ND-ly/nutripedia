@@ -4,6 +4,7 @@ import { ChipsComponent } from '../../../../core/feature/chips/chips.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../core/feature/material/material.module';
 import { SuggestionService } from '../../../../core/data-access/suggestion.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-suggestion-creator-dialog',
@@ -16,7 +17,7 @@ export class SuggestionCreatorDialogComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
   suggestionService = inject(SuggestionService);
-
+  snackbar = inject(MatSnackBar);
   product: any;
 
   ngOnInit(): void {
@@ -31,6 +32,9 @@ export class SuggestionCreatorDialogComponent implements OnInit {
       categories: this.product.categories.map((el: any) => el.name),
       ingredients: this.product.ingredients.map((el: any) => el.name),
     };
-    this.suggestionService.create(data).subscribe(() => this.dialogRef.close());
+    this.suggestionService.create(data).subscribe(() => {
+      this.snackbar.open('Suggestion added', '', { duration: 3000 });
+      this.dialogRef.close();
+    });
   }
 }

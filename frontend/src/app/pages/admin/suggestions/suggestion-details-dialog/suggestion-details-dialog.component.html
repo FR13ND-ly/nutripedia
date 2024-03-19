@@ -23,7 +23,15 @@
   <differences [data]="allergens">Allergens</differences>
 </div>
 <div class="actions">
-  <button mat-button (click)="onApprove()">Approve</button>
-  <button mat-button (click)="onDisApprove()">Decline</button>
-  <button mat-button (click)="onDelete()">Delete</button>
+  <div class="c">
+    <button mat-button (click)="onApprove()">
+      <mat-icon>done</mat-icon>Approve
+    </button>
+    <button mat-button (click)="onDisApprove()">
+      <mat-icon>close</mat-icon>Decline
+    </button>
+  </div>
+  <button color="warn" mat-button (click)="onDelete()">
+    <mat-icon>delete</mat-icon>Delete
+  </button>
 </div>

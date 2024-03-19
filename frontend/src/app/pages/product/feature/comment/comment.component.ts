@@ -53,12 +53,14 @@ export class CommentComponent {
   }
 
   onDeleteComment(commentId: number) {
-    this.productService
-      .deleteComment(commentId)
-      .subscribe(() => this.delete.emit());
+    if (!confirm('Are you sure?')) return;
+    this.productService.deleteComment(commentId).subscribe(() => {
+      this.delete.emit();
+    });
   }
 
   onDeleteSubComment(subCommentId: number, index: number) {
+    if (!confirm('Are you sure?')) return;
     this.productService
       .deleteComment(subCommentId)
       .subscribe(() => this.comment.subComments.splice(index, 1));
