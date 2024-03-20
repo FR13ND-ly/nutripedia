@@ -25,6 +25,17 @@ body {
   background-color: #000;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 25px;
+    filter: grayscale(0.5);
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
