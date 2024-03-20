@@ -4,7 +4,7 @@ Join us in embracing a transformative approach to public health with our groundb
 https://nutripedia-frontend.vercel.app/
 
 ## Video
-https://youtu.be/o9GKxZpiOWQ
+https://youtu.be/5bKU8sPZvR4
 
 ## Members
 - Motricală Alin-Gabriel
