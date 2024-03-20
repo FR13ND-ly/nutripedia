@@ -3,4 +3,4 @@ Join us in embracing a transformative approach to public health with our groundb
 
 ## Members
 - Motricală Alin-Gabriel
-- Radu Mihai-Alexandru
+- Ecaterina Zabica
