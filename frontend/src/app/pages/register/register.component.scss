@@ -8,3 +8,15 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.new {
+  margin-top: 1rem;
+  color: var(--text-950);
+  text-decoration: none;
+  transition: 0.1s;
+  cursor: pointer;
+  &:hover {
+    color: var(--text-600);
+    text-decoration: underline;
+  }
+}
