@@ -12,6 +12,7 @@ https://youtu.be/5bKU8sPZvR4
 
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/cc0af5f0-5f3e-4e26-ad10-9e761fc4e1bd)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/ee85ad84-b1b8-4482-9f84-275fe502801f)
+![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/d9c0195b-2b53-4962-bdaf-4e2623a38af7)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/fa1abccd-f126-4df9-b183-a9d9bb298b1b)
 ## Product
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/df413d8e-d163-439a-8c54-20fae98f106b)
@@ -32,6 +33,7 @@ https://youtu.be/5bKU8sPZvR4
 
 ## Admin
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/b0c441cf-e95a-44f9-b824-f0b8934ea519)
+![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/17537a84-8b53-47de-bc93-eb07aa1c0460)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/65fdefea-4bc0-4ea2-a7fe-cd665a04434f)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/640a06c4-0836-4dc4-90fd-75ba5926141a)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/336b9986-ac76-48f7-8710-12a8e415beb5)
