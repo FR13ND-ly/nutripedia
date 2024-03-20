@@ -3,6 +3,9 @@ Join us in embracing a transformative approach to public health with our groundb
 ## Site
 https://nutripedia-frontend.vercel.app/
 
+## Video
+https://youtu.be/o9GKxZpiOWQ
+
 ## Members
 - Motricală Alin-Gabriel
 - Ecaterina Zabica
