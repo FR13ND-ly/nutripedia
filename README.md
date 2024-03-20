@@ -26,7 +26,7 @@ https://youtu.be/5bKU8sPZvR4
 
 ## User
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/375e339a-647b-4353-87c6-c01a8d5071ca)
-![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/965c270f-0955-434f-82da-e0b5297fdaa9)
+![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/70ea7809-cddc-4ec1-8707-cb9de93bfdb7)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/1a660a39-2cfa-499c-ad33-996fd1464f2c)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/e462e25f-06f9-49c2-81ce-04ecfd90d38c)
 ![image](https://github.com/FR13ND-ly/nutripedia/assets/57838113/7727d0d5-10fc-4e57-ac69-9771495fc87f)
