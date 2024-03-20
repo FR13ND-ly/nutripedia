@@ -53,6 +53,7 @@ export class UserService {
 
   logout() {
     localStorage.setItem('token', '');
+    this.store.dispatch(userActions.logout());
     this.router.navigate(['/']);
   }
 
