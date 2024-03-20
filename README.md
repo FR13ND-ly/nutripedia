@@ -6,6 +6,9 @@ https://nutripedia-frontend.vercel.app/
 ## Video
 https://youtu.be/5bKU8sPZvR4
 
+## Team Name 
+MAG
+
 ## Members
 - Motricală Alin-Gabriel
 - Ecaterina Zabica
