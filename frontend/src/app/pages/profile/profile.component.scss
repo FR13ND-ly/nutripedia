@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 10%;
+  box-sizing: border-box;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  padding-top: 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 0.2rem;
+  .header-content {
+    display: flex;
+    gap: 2rem;
+    p {
+      width: 60rem;
+    }
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.badges {
+  display: flex;
+  gap: 0.5rem;
+  align-content: center;
+  .badge {
+    filter: grayscale(1);
+  }
+  .active {
+    filter: grayscale(0) !important;
+  }
+}

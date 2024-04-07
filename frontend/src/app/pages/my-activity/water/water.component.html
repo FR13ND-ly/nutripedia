@@ -1,0 +1,40 @@
+@if (water$ | async; as water) {
+<days
+  [days]="water"
+  [selectedIndex]="selectedIndex()"
+  (selectDay)="selectedIndex.set($event)"
+></days>
+
+<div class="content">
+  <div>
+    <div class="add" *ngIf="today == water[selectedIndex()].day">
+      <h3>Add water</h3>
+      <button mat-button (click)="onAddWater(250, water[selectedIndex()])">
+        <mat-icon>add</mat-icon> 250ml
+      </button>
+      <button mat-button (click)="onAddWater(500, water[selectedIndex()])">
+        <mat-icon>add</mat-icon> 500ml
+      </button>
+      <button mat-button (click)="onAddWater(750, water[selectedIndex()])">
+        <mat-icon>add</mat-icon> 750ml
+      </button>
+    </div>
+    <div *ngIf="today != water[selectedIndex()].day">
+      <h2>No Data</h2>
+    </div>
+  </div>
+  <div class="info">
+    <mat-progress-spinner
+      class="example-margin"
+      [color]="
+        water[selectedIndex()].content.amount >= 2000 ? 'primary' : 'warn'
+      "
+      diameter="255"
+      mode="determinate"
+      [value]="(water[selectedIndex()].content.amount / 2000) * 100"
+    >
+    </mat-progress-spinner>
+    <h2>{{ water[selectedIndex()].content.amount }} ml / 2000 ml</h2>
+  </div>
+</div>
+}

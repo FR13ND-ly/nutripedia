@@ -1,0 +1,5 @@
+@for (day of days; track $index) {
+<div (click)="onSelect($index)" [class.selected]="selectedIndex == $index">
+  <span>{{ day.showName }}</span>
+</div>
+}

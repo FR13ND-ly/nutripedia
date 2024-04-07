@@ -1,0 +1,30 @@
+@if (profile$ | async; as profile) {
+<h1>Badges</h1>
+<div class="badges">
+  <img
+    class="badge"
+    [class.active]="profile?.groupBadge"
+    src="/assets/badges/group.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.foodBadge"
+    src="/assets/badges/food.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.friendsBadge"
+    src="/assets/badges/friends.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.memberBadge"
+    src="/assets/badges/post.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.sportBadge"
+    src="/assets/badges/sport.svg"
+  />
+</div>
+}

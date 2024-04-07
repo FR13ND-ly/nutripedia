@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 500px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  width: fit-content;
+}
+
+.submit {
+  margin-top: 1rem;
+}

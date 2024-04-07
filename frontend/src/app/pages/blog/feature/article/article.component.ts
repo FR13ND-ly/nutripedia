@@ -8,11 +8,19 @@ import { UserComponent } from '../../../../core/ui/user/user.component';
 import { LikedPipe } from '../../../../core/pipes/liked.pipe';
 import { Store } from '@ngrx/store';
 import { setLoading } from '../../../../store/loading/loading.actions';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [DatePipe, MaterialModule, NgIf, UserComponent, LikedPipe],
+  imports: [
+    DatePipe,
+    MaterialModule,
+    NgIf,
+    UserComponent,
+    LikedPipe,
+    RouterLink,
+  ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })

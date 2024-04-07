@@ -6,6 +6,8 @@ import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProductsComponent } from './products/products.component';
 import { ChatComponent } from './chat/chat.component';
+import { FriendsComponent } from './friends/friends.component';
+import { CommunitiesComponent } from './communities/communities.component';
 
 @NgModule({
   declarations: [],
@@ -16,6 +18,16 @@ import { ChatComponent } from './chat/chat.component';
         component: UserComponent,
         children: [
           { path: '', redirectTo: 'products', pathMatch: 'full' },
+          {
+            path: 'friends',
+            component: FriendsComponent,
+            title: 'User Friends | Nutripedia',
+          },
+          {
+            path: 'groups',
+            component: CommunitiesComponent,
+            title: 'User Groups | Nutripedia',
+          },
           {
             path: 'settings',
             component: SettingsComponent,

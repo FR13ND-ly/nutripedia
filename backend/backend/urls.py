@@ -5,6 +5,8 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('api/activity/', include('activity.urls')),
+    path('api/community/', include('community.urls')),
     path('api/files/', include('file.urls')),
     path('api/products/', include('product.urls')),
     path('api/blog/', include('blog.urls')),

@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'user',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })

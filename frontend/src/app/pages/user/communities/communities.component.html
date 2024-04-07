@@ -1,0 +1,33 @@
+@if (communities$ | async; as communities) {
+<div class="header">
+  <h1>Groups</h1>
+  <div>
+    <button mat-button (click)="onCreateGroup(communities)">
+      <mat-icon>group_add</mat-icon>Creează o grupă
+    </button>
+  </div>
+</div>
+<div class="wrapper">
+  @for (group of communities; track group.id) {
+  <article>
+    <div class="content" routerLink="/home/group/{{ group.id }}">
+      <img [src]="group.imageUrl" />
+      <section>
+        <h2>{{ group.name }}</h2>
+        <p>{{ group.description }}</p>
+      </section>
+    </div>
+    <div class="actions">
+      <button mat-button (click)="onUnsubscribe(group, communities, $index)">
+        <mat-icon>delete</mat-icon>
+        unsubscribe
+      </button>
+    </div>
+  </article>
+  @if (!$last) {
+  <div class="divider"></div>
+  } } @empty {
+  <h3>Here will be shown groups you joined</h3>
+  }
+</div>
+}

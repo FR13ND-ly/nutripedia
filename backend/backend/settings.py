@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'suggestion',
     'file',
     'blog',
+    'activity',
+    'community',
     'corsheaders',
     'rest_framework',
 

@@ -1,0 +1,29 @@
+<div class="header">
+  <h1>Friends</h1>
+  <div class="actions" *ngIf="friendRequests$ | async as friendRequests">
+    <button
+      mat-button
+      *ngIf="friendRequests.length"
+      (click)="onOpenFriendRequests(friendRequests)"
+    >
+      Friend Requests ({{ friendRequests.length }})
+    </button>
+  </div>
+</div>
+<div class="wrapper" *ngIf="friends$ | async as friends">
+  @for (friend of friends; track friend.id) {
+  <article>
+    <div class="content" routerLink="/home/profile/{{ friend.id }}">
+      <img [src]="friend.imageUrl" />
+      <section>
+        <h2>{{ friend.name }}</h2>
+        <p>Friends from: {{ friend.date | date }}</p>
+      </section>
+    </div>
+  </article>
+  @if (!$last) {
+  <div class="divider"></div>
+  } } @empty {
+  <h3>Here will be shown your friends</h3>
+  }
+</div>

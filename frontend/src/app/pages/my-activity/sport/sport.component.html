@@ -1,0 +1,84 @@
+@if (sports$ | async; as sports) {
+<days
+  [days]="sports"
+  [selectedIndex]="selectedIndex()"
+  (selectDay)="selectedIndex.set($event)"
+></days>
+<div class="content">
+  <div class="meals">
+    <form
+      (submit)="onAddSportActivity(sports[selectedIndex()].content)"
+      [formGroup]="newActivity"
+      *ngIf="today == sports[selectedIndex()].day"
+    >
+      <h3>Add Sport Activity</h3>
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="name">
+          <mat-option value="walking">Walking</mat-option>
+          <mat-option value="running">Running</mat-option>
+          <mat-option value="swimming">Swimming</mat-option>
+          <mat-option value="cycling">Cycling</mat-option>
+          <mat-option value="athletics">Athletics</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Kcal Burn</mat-label>
+        <input matInput formControlName="kcalBurn" type="number" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="newActivity.invalid"
+      >
+        <mat-icon>send</mat-icon> Submit
+      </button>
+    </form>
+
+    <div class="sports">
+      @for (item of sports[selectedIndex()].content; track item.id) {
+      <article class="sport">
+        <h2>
+          <mat-icon>
+            @switch (item.name) { @case ('walking') { directions_walk } @case
+            ('running') { directions_run } @case ('cycling') { pedal_bike }
+            @case ('swimming') { pool } @case ('athletics') { fitness_center } }
+          </mat-icon>
+          {{ item.name }} {{ item.weight }}
+        </h2>
+        <div class="divider"></div>
+        <span>{{ item.date | date : "shortTime" }}</span>
+        <p><b>Calories burnt:</b> {{ item.kcalBurn }}</p>
+        <button
+          mat-button
+          color="warn"
+          (click)="
+            onDeleteActivity(item, sports[selectedIndex()].content, $index)
+          "
+        >
+          Delete
+        </button>
+      </article>
+      }@empty {
+      <h2>No data</h2>
+      }
+    </div>
+  </div>
+  <div class="info">
+    <mat-progress-spinner
+      class="example-margin"
+      color="primary"
+      diameter="255"
+      mode="determinate"
+      [value]="
+        ((sports[selectedIndex()].content | raport : 'kcalBurn') / 2000) * 100
+      "
+    >
+    </mat-progress-spinner>
+    <h2>
+      {{ sports[selectedIndex()].content | raport : "kcalBurn" }} kcal / 2000
+      kcal
+    </h2>
+  </div>
+</div>
+}

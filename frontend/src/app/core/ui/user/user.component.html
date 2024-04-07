@@ -1,2 +1,4 @@
-<img [src]="user.imageUrl" />
-<p>{{ user.username }}</p>
+<div routerLink="/home/profile/{{ user.id }}">
+  <img [src]="user.imageUrl" />
+  <p>{{ user.username }}</p>
+</div>

@@ -1,0 +1,95 @@
+@if (meals$ | async; as meals) {
+<days
+  [days]="meals"
+  [selectedIndex]="selectedIndex()"
+  (selectDay)="selectedIndex.set($event)"
+></days>
+
+<div class="content">
+  <div class="meals">
+    <form
+      (submit)="onAddMeal(meals[selectedIndex()].content)"
+      [formGroup]="newMealForm"
+      *ngIf="today == meals[selectedIndex()].day"
+    >
+      <h3>Add meal</h3>
+      <section>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Kcal</mat-label>
+          <input matInput formControlName="kcal" type="number" />
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field appearance="outline">
+          <mat-label>Weight</mat-label>
+          <input matInput formControlName="weight" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Carbohydrates, g</mat-label>
+          <input matInput formControlName="carbohydrates" type="number" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Protein, g</mat-label>
+          <input matInput formControlName="protein" type="number" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Fats, g</mat-label>
+          <input matInput formControlName="fats" type="number" />
+        </mat-form-field>
+      </section>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="newMealForm.invalid"
+      >
+        <mat-icon>send</mat-icon> Submit
+      </button>
+    </form>
+
+    <div class="meals">
+      @for (item of meals[selectedIndex()].content; track item.id) {
+      <article class="meal">
+        <h2>
+          {{ item.name }} {{ item.weight }}
+          <span>{{ item.date | date : "shortTime" }}</span>
+        </h2>
+        <div class="divider"></div>
+        <p><b>Kcal:</b> {{ item.kcal }}</p>
+        <p><b>Carbohydrates:</b> {{ item.carbohydrates }}</p>
+        <p><b>Protein:</b> {{ item.protein }}</p>
+        <p><b>Fats:</b> {{ item.fats }}</p>
+        <button
+          mat-button
+          color="warn"
+          (click)="onDeleteMeal(item, meals[selectedIndex()].content, $index)"
+        >
+          Delete
+        </button>
+      </article>
+      }@empty {
+      <h2>No data</h2>
+      }
+    </div>
+  </div>
+  <div class="info">
+    <mat-progress-spinner
+      class="example-margin"
+      color="primary"
+      diameter="255"
+      mode="determinate"
+      [value]="
+        ((meals[selectedIndex()].content | raport : 'kcal') / 2000) * 100
+      "
+    >
+    </mat-progress-spinner>
+    <h2>
+      {{ meals[selectedIndex()].content | raport : "kcal" }} kcal / 2000 kcal
+    </h2>
+  </div>
+</div>
+}

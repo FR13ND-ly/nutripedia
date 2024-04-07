@@ -1,0 +1,40 @@
+.content {
+  display: grid;
+  grid-template-columns: 25% 25%;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  button {
+    width: fit-content;
+  }
+}
+
+.water {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  // background-color: var(--background-100);
+  height: fit-content;
+  padding: 2rem;
+}

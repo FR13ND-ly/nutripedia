@@ -1,0 +1,30 @@
+<h2>Create a group</h2>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Nume</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Descriere</mat-label>
+    <input matInput formControlName="description" />
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="accent"
+    type="button"
+    (click)="imgInput.click()"
+  >
+    <mat-icon>add_photo_alternate</mat-icon>Imaginea*
+  </button>
+
+  <button
+    class="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="form.invalid || imageId == -1"
+  >
+    Submit
+  </button>
+</form>
+
+<input type="file" class="hidden" (change)="onUploadFile($event)" #imgInput />

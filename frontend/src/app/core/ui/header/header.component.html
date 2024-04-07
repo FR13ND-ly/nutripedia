@@ -8,6 +8,10 @@
       <mat-icon>newspaper</mat-icon>
       Blog
     </button>
+    <button mat-button routerLink="/home/my-activity">
+      <mat-icon>webhook</mat-icon>
+      My Activity
+    </button>
     @if (notifications$ | async; as notifications) {
     <button
       mat-icon-button
@@ -35,9 +39,6 @@
       </div>
     </mat-menu>
     }
-    <button mat-icon-button (click)="onToggleTheme()">
-      <mat-icon>dark_mode</mat-icon>
-    </button>
     <button mat-icon-button routerLink="/home/user">
       <mat-icon>account_circle</mat-icon>
     </button>

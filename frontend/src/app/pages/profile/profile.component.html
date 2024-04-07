@@ -1,0 +1,45 @@
+<div class="profile-header">
+  <div class="header-content">
+    <img [src]="profile?.imageUrl" />
+    <section>
+      <h1>{{ profile?.name }}</h1>
+      <p>{{ profile?.friends?.length }} friends</p>
+    </section>
+  </div>
+  <div class="actions">
+    @if (profile?.followers.includes(userId)) {
+    <button mat-button (click)="onUnfriend()">Unfollow</button>
+    } @else {
+    <button mat-button (click)="onSendFriendRequest()">Add friend</button>
+
+    }
+  </div>
+</div>
+<h1>Badges</h1>
+<div class="badges">
+  <img
+    class="badge"
+    [class.active]="profile?.groupBadge"
+    src="/assets/badges/group.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.foodBadge"
+    src="/assets/badges/food.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.friendsBadge"
+    src="/assets/badges/friends.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.memberBadge"
+    src="/assets/badges/post.svg"
+  />
+  <img
+    class="badge"
+    [class.active]="profile?.sportBadge"
+    src="/assets/badges/sport.svg"
+  />
+</div>

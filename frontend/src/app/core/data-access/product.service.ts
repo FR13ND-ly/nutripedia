@@ -14,7 +14,6 @@ export class ProductService {
   }
 
   getProduct(id: number) {
-    console.log(id);
     return this.http.get(`${this.apiUrl}get/${id}/`);
   }
 

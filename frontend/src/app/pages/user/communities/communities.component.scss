@@ -1,0 +1,25 @@
+article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .content {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    p {
+      width: 60rem;
+    }
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 1.3rem;
+    }
+    &:hover {
+      h2 {
+        text-decoration: underline;
+      }
+    }
+  }
+}

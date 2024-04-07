@@ -1,7 +1,11 @@
-:host {
+div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+  &:hover p {
+    text-decoration: underline;
+  }
 }
 
 img {

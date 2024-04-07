@@ -16,8 +16,8 @@ $frontend-theme: mat.define-dark-theme(
   )
 );
 
-[data-theme="dark"] {
-  @include mat.all-component-colors($frontend-theme);
+@include mat.all-component-themes($frontend-theme);
+:root {
   --text-50: #080d12;
   --text-100: #0f1924;
   --text-200: #1f3347;

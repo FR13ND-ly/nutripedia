@@ -1,0 +1,21 @@
+@for (friend of friends; track friend.id) {
+<article>
+  <div class="content" routerLink="/home/profile/{{ friend.id }}">
+    <img [src]="friend.imageUrl" />
+    <section>
+      <b>{{ friend.name }}</b>
+      <p>Send on: {{ friend.date | date }}</p>
+    </section>
+  </div>
+  <div class="actions">
+    <button mat-button (click)="onResolve(friend, 'accepted')">
+      <mat-icon>done</mat-icon> Accept
+    </button>
+    <button mat-button (click)="onResolve(friend, 'declined')">
+      <mat-icon>close</mat-icon> Decline
+    </button>
+  </div>
+</article>
+@if (!$last) {
+<div class="divider"></div>
+} }

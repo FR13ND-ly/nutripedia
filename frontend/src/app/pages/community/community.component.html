@@ -1,0 +1,69 @@
+<div class="group-header">
+  <div class="header-content">
+    <img [src]="group?.imageUrl" />
+    <section>
+      <h1>{{ group?.name }}</h1>
+      <p>{{ group?.followers?.length }} subscribers</p>
+      <p>{{ group?.description }}</p>
+    </section>
+  </div>
+  <div class="actions">
+    @if (group?.followers.includes(userId)) {
+    <button mat-button (click)="onUnsubscribe(group)">Unsubscribe</button>
+    } @else {
+    <button mat-button (click)="onSubscribe(group)">Subscribe</button>
+
+    }
+  </div>
+</div>
+<div class="wrapper">
+  <div class="articles">
+    <form (submit)="onPublish()" [formGroup]="articleForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Add Article</mat-label>
+        <textarea matInput formControlName="content"></textarea>
+        <button mat-button [disabled]="articleForm.invalid">
+          <mat-icon>send</mat-icon> Submit
+        </button>
+      </mat-form-field>
+    </form>
+    <div class="articles">
+      @for (article of group?.articles; track article.id) {
+      <article>
+        <div class="content">
+          <div class="top">
+            <user [user]="article.user" />
+            <span>{{ article.date | date : "medium" }}</span>
+          </div>
+          <p>{{ article.content }}</p>
+          <div class="actions">
+            <button mat-button color="warn" (click)="onLike(article)">
+              <mat-icon
+                >favorite@if (!(article.likes | liked: userId)) {_outline} </mat-icon
+              >{{ article.likes.length }} likes
+            </button>
+          </div>
+        </div>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          *ngIf="article.user.id == userId"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </article>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="onDeleteArticle(article, group.articles, $index)"
+        >
+          Delete
+        </button>
+      </mat-menu>
+      }
+    </div>
+  </div>
+  <div class="rating">
+    <h3>Rating</h3>
+  </div>
+</div>

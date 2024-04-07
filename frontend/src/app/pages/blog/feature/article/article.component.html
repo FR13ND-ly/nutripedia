@@ -1,6 +1,6 @@
 <article>
   <div class="content">
-    <div class="top">
+    <div class="top" routerLink="/home/profile/{{ article.user.id }}">
       <user [user]="article.user" />
       <span>{{ article.date | date : "medium" }}</span>
     </div>

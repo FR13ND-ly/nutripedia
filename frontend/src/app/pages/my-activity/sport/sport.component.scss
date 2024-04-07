@@ -1,0 +1,58 @@
+.content {
+  display: grid;
+  grid-template-columns: 75% auto;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid #a3a3a3;
+  border-radius: 0.5rem;
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  section {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.sports {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.sport {
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  background-color: var(--primary-100);
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: var(--background-100);
+  height: fit-content;
+  padding: 2rem;
+}

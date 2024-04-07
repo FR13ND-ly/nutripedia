@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ShellComponent } from './shell.component';
+import { CommunityComponent } from '../../../pages/community/community.component';
+import { ProfileComponent } from '../../../pages/profile/profile.component';
 
 @NgModule({
   declarations: [],
@@ -31,7 +33,21 @@ import { ShellComponent } from './shell.component';
                 (m) => m.ProductModule
               ),
           },
-
+          {
+            path: 'group/:groupId',
+            component: CommunityComponent,
+          },
+          {
+            path: 'profile/:userId',
+            component: ProfileComponent,
+          },
+          {
+            path: 'my-activity',
+            loadChildren: () =>
+              import('./../../../pages/my-activity/my-activity.module').then(
+                (m) => m.MyActivityModule
+              ),
+          },
           {
             path: 'user',
             loadChildren: () =>
